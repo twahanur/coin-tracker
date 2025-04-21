@@ -81,6 +81,7 @@ export default function CoinsTable() {
         coin.symbol.toLowerCase().includes(search)
     );
   };
+  const countPages = handleSearch().length / 10;
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -118,7 +119,7 @@ export default function CoinsTable() {
                         fontFamily: "Montserrat",
                       }}
                       key={head}
-                      align={head === "Coin" ? "" : "right"}
+                      align={head === "Coin" ? "center" : "right"}
                     >
                       {head}
                     </TableCell>
@@ -139,6 +140,7 @@ export default function CoinsTable() {
                       >
                         <TableCell
                           component="th"
+                          align="center"
                           scope="row"
                           style={{
                             display: "flex",
@@ -211,8 +213,9 @@ export default function CoinsTable() {
         </TableContainer>
 
         {/* Comes from @material-ui/lab */}
+
         <Pagination
-          count={(handleSearch()?.length / 10).toFixed(0)}
+          count={countPages}
           style={{
             padding: 20,
             width: "100%",
